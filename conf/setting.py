@@ -4,10 +4,5 @@ import os
 import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAIN_DB = '%s/db/main_dict' % BASE_DIR
-TEACHER_DB = '%s/db/teachers_dict' % BASE_DIR
-DATA_DIR = {
-    'courses': 'courses',
-    'students': 'students',
-    'teachers': 'teachers'
-}
+DB_PATH = '%s/db/main_db' % BASE_DIR
+
