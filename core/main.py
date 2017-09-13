@@ -39,11 +39,11 @@ class School_center:
             1.创建班级
             2.招聘讲师
             3.创建课程
-            ''' % self.current_school
+            ''' % self.current_school.school
         menu_dict = {
             '1': self.creat_grades,
             '2': self.creat_teacher,
-            '3': self.creat_teacher
+            '3': self.creat_course
         }
         print(menu)
         choise = input('选择要进入的模式>>>')
@@ -65,7 +65,7 @@ class School_center:
             db_hander.write_data(setting.MAIN_DB, self.main_dict)
             print('创建课程成功即将返回上一级')
             time.sleep(1)
-            self.__init__()
+            self.__init__(self.main_dict, self.current_school)
 
     def creat_teacher(self):
         pass
@@ -109,7 +109,7 @@ def run():
             key.cat_school()
         school_inp = input('请输入学校名称>>>')
         for key in main_dict:
-            if hasattr(key, school_inp):
+            if getattr(key, 'school') == school_inp:
                 current_school = key
-                obj = School_center(main_dict, current_school)
+                School_center(main_dict, current_school)
                 break
