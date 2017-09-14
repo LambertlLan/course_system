@@ -21,9 +21,13 @@ class School:
         grade_obj = Grades(grade_name, grade_course)
         self.school_class[grade_name] = grade_obj
 
-    def creat_teacher(self, teacher_name, teacher_salary):
-        teacher_obj = Teacheres(teacher_name, teacher_salary)
-        self.school_class[teacher_name] = teacher_obj
+    def creat_teacher(self, teacher_name, teacher_salary, teacher_grade):
+        teacher_obj = Teacheres(teacher_name, teacher_salary, teacher_grade)
+        self.school_teacher[teacher_name] = teacher_obj
+
+    def creat_student(self, student_name, student_age, student_grade):
+        student_obj = Student(student_name, student_age)
+        self.school_class[student_grade].grade_student[student_name] = student_obj
 
 
 class Grades():
@@ -33,11 +37,17 @@ class Grades():
         self.grade_student = {}
 
 
-class Teacheres():
-    def __init__(self, teacher_name, teacher_salary,teacher_grade):
+class Teacheres:
+    def __init__(self, teacher_name, teacher_salary, teacher_grade):
         self.teacher_name = teacher_name
         self.teacher_salary = teacher_salary
         self.teacher_grades = [teacher_grade]
+
+
+class Student:
+    def __init__(self, student_name, student_age):
+        self.student_name = student_name
+        self.student_age = student_age
 
 
 class Course:
